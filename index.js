@@ -13,11 +13,14 @@ const videoRoutes = require("./routes/videos");
 const noteRoutes = require("./routes/notes");
 
 const app = express();
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+const rawFrontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+const FRONTEND_URL = rawFrontendUrl.trim().replace(/^['"]|['"]$/g, "");
+console.log("CORS origin set to:", FRONTEND_URL);
 
 app.use(
   cors({
     origin: FRONTEND_URL,
+    credentials: true,
   })
 );
 app.use(express.json());
