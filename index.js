@@ -20,15 +20,18 @@ app.use(
   })
 );
 app.use(express.json());
-// Configure session cookie to allow cross-site requests
+// Trust first proxy in production (for secure cookies behind a load balancer)
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false,
-      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production", // requires HTTPS in production
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     },
   })
 );
