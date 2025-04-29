@@ -119,7 +119,4 @@ By default, the server listens on port `8000` or the port defined in `process.en
 }
 ```
 
-## Deployment
-
-You can deploy this backend to any Node.js hosting platform (Heroku, Render, Vercel Functions, etc.). Make sure to set the required environment variables (`.env`) in your deployment environment.
 # youtube-buddy-backend
