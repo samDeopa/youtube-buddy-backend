@@ -13,7 +13,6 @@ const videoRoutes = require("./routes/videos");
 const noteRoutes = require("./routes/notes");
 
 const app = express();
-// Enable CORS with credentials for front-end app
 app.use(
   cors({
     origin: process.env.FRONTEND_URL || "http://localhost:3000",
@@ -28,8 +27,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // not using HTTPS in dev
-      sameSite: "lax", // allow cookies on top-level navigations
+      secure: false,
+      sameSite: "lax",
     },
   })
 );

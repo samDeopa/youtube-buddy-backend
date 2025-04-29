@@ -8,7 +8,8 @@ router.get(
   "/google",
   passport.authenticate("google", {
     scope: ["profile", "https://www.googleapis.com/auth/youtube.force-ssl"],
-  })
+  }),
+  (req, res) => res.redirect(FRONTEND_URL + "/home")
 );
 
 router.get(
