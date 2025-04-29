@@ -13,16 +13,15 @@ const videoRoutes = require("./routes/videos");
 const noteRoutes = require("./routes/notes");
 
 const app = express();
-app.use(cors());
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 
-// app.use(
-//   cors({
-//     origin: process.env.FRONTEND_URL || "http://localhost:3000",
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+    credentials: true,
+  })
+);
 app.use(express.json());
-// Trust first proxy in production (for secure cookies behind a load balancer)
 if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
 }
