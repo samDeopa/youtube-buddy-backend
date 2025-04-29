@@ -18,7 +18,6 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 app.use(
   cors({
     origin: FRONTEND_URL,
-    credentials: true,
   })
 );
 app.use(express.json());
